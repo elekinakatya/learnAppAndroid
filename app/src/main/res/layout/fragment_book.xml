@@ -6,9 +6,9 @@
     tools:context=".BookFragment">
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/design_default_color_on_primary"
-        />
+    <ImageView
+        android:layout_width="422dp"
+        android:layout_height="89dp"
+        android:src="@drawable/learn"
+        android:layout_marginTop="-10dp"/>
 </FrameLayout>
