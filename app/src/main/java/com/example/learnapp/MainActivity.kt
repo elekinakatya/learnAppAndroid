@@ -12,6 +12,8 @@ import com.example.learnapp.MenuFragment
 import com.example.learnapp.ProfileFragment
 import com.example.learnapp.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 
 class MainActivity: AppCompatActivity() {
 
@@ -19,6 +21,9 @@ class MainActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val fs=Firebase.firestore
+        fs.collection("learn")
+            .document().set(mapOf("name" to "My"))
         setContentView(R.layout.activity_main)
         loadFragment(MenuFragment())
         bottomNav = findViewById(R.id.bottomNav) as BottomNavigationView
