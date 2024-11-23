@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
-            android:textSize="24sp"
+            android:textSize="25dp"
             android:textStyle="bold"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="10dp"
@@ -35,17 +35,18 @@
             android:id="@+id/textViewAnnotation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
+
             android:textColor="@android:color/darker_gray"
-            android:textSize="18sp"/>
+            android:textSize="23sp"/>
 
         <!-- Заголовок для информации -->
         <TextView
             android:id="@+id/textViewInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:textSize="16sp"/>
+
+            android:textSize="20dp"
+            android:gravity="fill"/>
 
     </LinearLayout>
 </ScrollView>
