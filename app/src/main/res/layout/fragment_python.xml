@@ -6,6 +6,17 @@
     tools:context=".PythonFragment"
     android:background="@color/blue">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="100dp"
+        android:clickable="true"
+        android:scrollbars="vertical"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
     <!-- TODO: Update blank fragment layout -->
     <ImageView
         android:id="@+id/back_button"
@@ -19,6 +30,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="PYTHON"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="35dp"
+        android:textSize="30dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         />
 
 

@@ -11,6 +11,7 @@ activity = "1.9.3"
 constraintlayout = "2.2.0"
 gmsVersion="4.4.2"
 bomVersion="33.6.0"
+parVersion="2.1.0-RC2"
 
 [libraries]
 
@@ -29,5 +30,5 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 gms= { id = "com.google.gms.google-services", version.ref = "gmsVersion" }
-
+par={id="org.jetbrains.kotlin.plugin.parcelize",version.ref = "parVersion"}
 

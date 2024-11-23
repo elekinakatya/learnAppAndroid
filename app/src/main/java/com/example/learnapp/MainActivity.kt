@@ -21,9 +21,9 @@ class MainActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val fs=Firebase.firestore
-        fs.collection("learn")
-            .document().set(mapOf("name" to "My"))
+//        val fs=Firebase.firestore
+//        fs.collection("learn")
+//            .document().set(mapOf("name" to "My","annatatin" to "","info" to ""))
         setContentView(R.layout.activity_main)
         loadFragment(MenuFragment())
         bottomNav = findViewById(R.id.bottomNav) as BottomNavigationView

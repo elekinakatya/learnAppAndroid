@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.gms)
+    alias(libs.plugins.par)
 
 
 }
@@ -41,6 +42,7 @@ android {
 
 dependencies {
     implementation(platform(libs.firebase.bom))
+    implementation ("androidx.core:core:1.0.1")
 
     implementation(libs.firebase.firestore)
     implementation("com.google.firebase:firebase-auth:23.1.0")
