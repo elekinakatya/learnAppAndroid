@@ -1,4 +1,5 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
@@ -14,7 +15,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/backblue"
+            android:src="@drawable/violback"
             android:clickable="true"/>
 
         <!-- Заголовок для имени -->
@@ -35,7 +36,6 @@
             android:id="@+id/textViewAnnotation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:textColor="@android:color/darker_gray"
             android:textSize="23sp"/>
 
@@ -44,9 +44,16 @@
             android:id="@+id/textViewInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:textSize="20dp"
             android:gravity="fill"/>
+        <Button
+            android:id="@+id/buttonTakeQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#B385F2"
+            android:text="ПРОЙТИ ТЕСТ"
+            />
 
     </LinearLayout>
 </ScrollView>

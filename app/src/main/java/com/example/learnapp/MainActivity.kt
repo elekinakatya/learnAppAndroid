@@ -2,6 +2,7 @@ package com.example.learnapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.Toast
@@ -15,18 +16,18 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 
-class MainActivity: AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
-    lateinit var bottomNav : BottomNavigationView
+    lateinit var bottomNav: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        val fs=Firebase.firestore
-//        fs.collection("learn")
-//            .document().set(mapOf("name" to "My","annatatin" to "","info" to ""))
         setContentView(R.layout.activity_main)
-        loadFragment(MenuFragment())
-        bottomNav = findViewById(R.id.bottomNav) as BottomNavigationView
+
+        // Загрузка SplashScreen при запуске приложения
+        loadFragment(SplashScreen())
+
+        bottomNav = findViewById(R.id.bottomNav)
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.profile -> {
@@ -41,21 +42,24 @@ class MainActivity: AppCompatActivity() {
                     loadFragment(MenuFragment())
                     true
                 }
-                R.id.advice-> {
+                R.id.advice -> {
                     loadFragment(AdviceFragment())
                     true
                 }
-
                 else -> {
                     false
                 }
             }
         }
     }
-    private fun loadFragment(fragment: Fragment){
+
+    private fun loadFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.container,fragment)
+        transaction.replace(R.id.container, fragment)
         transaction.commit()
+
+
     }
+
 
 }
