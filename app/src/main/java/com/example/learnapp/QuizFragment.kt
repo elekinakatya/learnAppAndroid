@@ -27,8 +27,8 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
     private lateinit var documentId: String
     private var currentQuestionIndex = 0
     private var selectedAnswer: String? = null // Хранит выбранный ответ
+    private var correctAnswersCount = 0 // Количество правильных ответов
     private lateinit var progressIndicator: LinearProgressIndicator // Прогресс-индикатор
-
     companion object {
         private const val ARG_DOCUMENT_ID = "documentId"
 
@@ -101,8 +101,6 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
                 button.setBackgroundColor(Color.parseColor("#D5C5ED"))
             }
         }
-
-        // Обработчик нажатия на кнопку "ОТВЕТИТЬ"
         view.findViewById<Button>(R.id.buttonQuiz).setOnClickListener {
             if (selectedAnswer == null) {
                 Toast.makeText(requireContext(), "Пожалуйста, выберите ответ!", Toast.LENGTH_SHORT).show()
@@ -111,6 +109,7 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
 
             if (selectedAnswer == question.yes) {
                 Toast.makeText(requireContext(), "Правильный ответ!", Toast.LENGTH_SHORT).show()
+                correctAnswersCount++ // Увеличиваем счетчик правильных ответов
                 currentQuestionIndex++
                 updateProgressIndicator() // Обновление прогресса
 
@@ -121,7 +120,7 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
                     // Переход на фрагмент результатов
                     val resultFragment = ResultFragment().apply {
                         arguments = Bundle().apply {
-                            putInt("SCORE", calculateScore()) // Подсчет баллов
+                            putInt("SCORE", correctAnswersCount) // Передаем количество правильных ответов
                             putInt("TOTAL_QUESTIONS", questionsList.size) // Общее количество вопросов
                         }
                     }
@@ -135,26 +134,7 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
             }
         }
 
-//        view.findViewById<Button>(R.id.buttonQuiz).setOnClickListener {
-//            if (selectedAnswer == null) {
-//                Toast.makeText(requireContext(), "Пожалуйста, выберите ответ!", Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener
-//            }
-//
-//            if (selectedAnswer == question.yes) {
-//                Toast.makeText(requireContext(), "Правильный ответ!", Toast.LENGTH_SHORT).show()
-//                currentQuestionIndex++
-//                updateProgressIndicator() // Обновление прогресса
-//                if (currentQuestionIndex < questionsList.size) {
-//                    selectedAnswer = null // Сбрасываем выбранный ответ
-//                    displayQuestion(view, questionsList[currentQuestionIndex])
-//                } else {
-//                    Toast.makeText(requireContext(), "Тест завершен!", Toast.LENGTH_SHORT).show()
-//                }
-//            } else {
-//                Toast.makeText(requireContext(), "Ответ неверный! Попробуйте еще раз.", Toast.LENGTH_SHORT).show()
-//            }
-//        }
+
 
         // Обновление индикатора вопросов
         updateQuestionIndicator(view)

@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         loadFragment(SplashScreen())
 
         bottomNav = findViewById(R.id.bottomNav)
+        bottomNav.selectedItemId = R.id.menu
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.profile -> {

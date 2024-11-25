@@ -12,4 +12,44 @@
         android:src="@drawable/stat"
         android:layout_marginTop="-10dp"/>
 
+
+    <ImageView
+        android:id="@+id/s1"
+        android:layout_width="204dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="90dp"
+        android:clickable="true"
+        android:padding="20dp"
+        android:src="@drawable/cubb" />
+
+    <ImageView
+        android:id="@+id/s2"
+        android:layout_width="204dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="90dp"
+        android:clickable="true"
+        android:padding="20dp"
+        android:src="@drawable/cuby" />
+    <ImageView
+        android:id="@+id/s3"
+        android:layout_width="204dp"
+        android:layout_height="200dp"
+        android:src="@drawable/cubg"
+        android:clickable="true"
+        android:padding="20dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="265dp"/>
+    <ImageView
+        android:id="@+id/s4"
+        android:layout_width="204dp"
+        android:layout_height="200dp"
+        android:src="@drawable/cubvv"
+        android:clickable="true"
+        android:padding="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="265dp"/>
+
+
 </FrameLayout>

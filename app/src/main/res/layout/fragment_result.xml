@@ -6,28 +6,50 @@
     tools:context=".ResultFragment">
 
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="695dp"
+        android:layout_marginStart="-100dp"
+        android:layout_marginTop="-180dp"
+        android:src="@drawable/rres">
+
+    </ImageView>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-    <Button
-        android:id="@+id/button"
+        android:id="@+id/result_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        tools:text="TextView"
+        android:layout_marginTop="375dp"
+        android:layout_marginStart="170dp"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
     <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        android:id="@+id/button_next_topic"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="К следующей теме"
+        android:layout_marginTop="450dp"
+        android:layout_marginStart="60dp"
+        android:textSize="17dp"/>
 
     <Button
-        android:id="@+id/button6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        android:id="@+id/button_my_learning"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Моё обучение"
+        android:layout_marginTop="500dp"
+        android:layout_marginStart="60dp"
+        android:textSize="17dp"/>
+
+    <Button
+        android:id="@+id/button_main_menu"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Главное меню"
+        android:layout_marginTop="550dp"
+        android:layout_marginStart="60dp"
+        android:textSize="17dp"/>
 
 </FrameLayout>
