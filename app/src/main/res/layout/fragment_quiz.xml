@@ -12,12 +12,21 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="52dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/violback"
+            android:clickable="true"/>
 
         <TextView
             android:id="@+id/ques_indicator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:padding="18dp"
+            android:layout_marginStart="60dp"
             android:textSize="28dp"
             android:textStyle="bold"
             tools:text="Вопрос 3/6" />
@@ -30,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginVertical="8dp"
-        android:paddingTop="50dp"
+        android:paddingTop="63dp"
         android:progressTint="#B284F0"
         tools:progress="50"
         />
@@ -38,7 +47,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="390dp"
-        android:layout_height="580dp"
+        android:layout_height="610dp"
         android:layout_marginVertical="80dp"
         android:layout_marginStart="10dp"
         android:elevation="4dp"
@@ -60,7 +69,7 @@
                 android:backgroundTint="#D5C5ED"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="Что тfrjj питон?"
+                tools:text="Что тfrjj питон?"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:paddingVertical="5dp"/>
@@ -68,11 +77,11 @@
             <Button
                 android:paddingVertical="5dp"
                 android:layout_marginTop="40dp"
-                android:id="@+id/button"
+                android:id="@+id/button1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#EBEBEB"
-                android:text="Button1"
+                tools:text="Button1"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -83,7 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#EBEBEB"
-                android:text="Button2"
+                tools:text="Button2"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -94,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#EBEBEB"
-                android:text="Button3"
+                tools:text="Button3"
                 android:textColor="#040404"
                 android:textSize="20sp" />
 
@@ -105,7 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#EBEBEB"
-                android:text="Button4"
+                tools:text="Button4"
                 android:textColor="#000000"
                 android:textSize="20sp" />
             <Button

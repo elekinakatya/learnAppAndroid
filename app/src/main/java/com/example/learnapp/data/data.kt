@@ -7,4 +7,5 @@ data class data(
     val name: String="",
     val anat: String="",
     val info: String="",
+    val documentId: String = "",
 ): Parcelable
