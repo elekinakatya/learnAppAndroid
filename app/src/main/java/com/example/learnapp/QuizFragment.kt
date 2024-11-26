@@ -55,10 +55,11 @@ class QuizFragment : Fragment(R.layout.fragment_quiz) {
 
         val backButton = view.findViewById<ImageView>(R.id.back_button)
         backButton.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.container, PythonFragment())
-                .addToBackStack(null)
-                .commit()
+            requireActivity().supportFragmentManager.popBackStack()
+//            requireActivity().supportFragmentManager.beginTransaction()
+//                .replace(R.id.container, InfoFragment())
+//                .addToBackStack(null)
+//                .commit()
         }
     }
 

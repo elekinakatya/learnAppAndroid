@@ -34,75 +34,31 @@ class PythonFragment : Fragment(R.layout.fragment_python), MyAdapter.OnItemClick
 
         val pythonImage = view.findViewById<ImageView>(R.id.back_button)
         pythonImage.setOnClickListener {
-            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.container, MenuFragment())
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
+            requireActivity().supportFragmentManager.popBackStack()
         }
     }
-
     private fun fetchDataFromFirestore() {
         db.collection("learn").get()
             .addOnSuccessListener { documents ->
                 val dataList = mutableListOf<data>()
+                var firstTopic = true // Флаг для первой темы
                 for (document in documents) {
                     val dataItem = document.toObject(data::class.java)
-                    // Добавление документа в конец списка для сохранения порядка
+                    // Устанавливаем завершенность для первой темы
+                    if (firstTopic) {
+                        dataItem.isCompleted = true
+                        firstTopic = false
+                    } else {
+                        dataItem.isCompleted = false
+                    }
                     dataList.add(dataItem)
                 }
-                // Обновляем адаптер с полученными данными в том порядке, в котором они были извлечены
                 adapter.updateData(dataList)
             }
             .addOnFailureListener { exception ->
                 Log.d("PythonFragment", "Error getting documents: ", exception)
             }
-    }
 
-    override fun onItemClick(dataItem: data) {
-        // Проверяем, был ли элемент уже пройден
-        val currentProgress = viewModel.progress.value ?: 0
-        val newProgress = currentProgress + 1 // Увеличиваем прогресс на 1, если тема новая
-
-        // Обновляем прогресс в ViewModel
-        viewModel.updateProgress(newProgress)
-
-        // Добавляем выбранную тему в ViewModel
-        viewModel.addSelectedTopic(dataItem)
-
-        // Переход к InfoFragment с передачей данных, включая documentId
-        val infoFragment = InfoFragment.newInstance(dataItem.copy(documentId = dataItem.documentId))
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.container, infoFragment)
-            .addToBackStack(null)
-            .commit()
-    }
-}
-
-//class PythonFragment : Fragment(R.layout.fragment_python), MyAdapter.OnItemClickListener {
-//
-//    private lateinit var recyclerView: RecyclerView
-//    private lateinit var adapter: MyAdapter
-//    private val db = FirebaseFirestore.getInstance()
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        recyclerView = view.findViewById(R.id.recyclerView)
-//        recyclerView.layoutManager = LinearLayoutManager(context)
-//        adapter = MyAdapter(emptyList(), this)
-//        recyclerView.adapter = adapter
-//
-//        fetchDataFromFirestore()
-//
-//        val pythonImage = view.findViewById<ImageView>(R.id.back_button)
-//        pythonImage.setOnClickListener {
-//            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-//            fragmentTransaction.replace(R.id.container, MenuFragment())
-//            fragmentTransaction.addToBackStack(null)
-//            fragmentTransaction.commit()
-//        }
-//    }
-//
 //    private fun fetchDataFromFirestore() {
 //        db.collection("learn").get()
 //            .addOnSuccessListener { documents ->
@@ -118,15 +74,29 @@ class PythonFragment : Fragment(R.layout.fragment_python), MyAdapter.OnItemClick
 //            .addOnFailureListener { exception ->
 //                Log.d("PythonFragment", "Error getting documents: ", exception)
 //            }
-//    }
-//
-//    override fun onItemClick(dataItem: data) {
-//        // Переход к InfoFragment с передачей данных
-//        val infoFragment = InfoFragment.newInstance(dataItem)
-//        requireActivity().supportFragmentManager.beginTransaction()
-//            .replace(R.id.container, infoFragment)
-//            .addToBackStack(null)
-//            .commit()
-//    }
-//}
+    }
+
+    override fun onItemClick(dataItem: data) {
+        val isTopicAlreadySelected = viewModel.selectedTopics.value?.any { it.documentId == dataItem.documentId } == true
+
+        if (!isTopicAlreadySelected) {
+            val currentProgress = viewModel.progress.value ?: 0
+            val newProgress = currentProgress + 1 // Увеличиваем прогресс на 1, если тема новая
+
+            // Обновляем прогресс в ViewModel
+            viewModel.updateProgress(newProgress)
+
+            // Добавляем выбранную тему в ViewModel
+            viewModel.addSelectedTopic(dataItem)
+        }
+
+        // Переход к InfoFragment с передачей данных, включая documentId
+        val infoFragment = InfoFragment.newInstance(dataItem.copy(documentId = dataItem.documentId))
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.container, infoFragment)
+            .addToBackStack(null)
+            .commit()
+    }
+}
+
 

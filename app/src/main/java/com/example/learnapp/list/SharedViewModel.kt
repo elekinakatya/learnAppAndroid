@@ -26,8 +26,11 @@ class SharedViewModel : ViewModel() {
     }
 
     fun addSelectedTopic(topic: data) {
-        _selectedTopics.value?.add(topic) // Добавляем выбранную тему
-        _selectedTopics.value = _selectedTopics.value // Триггерим обновление LiveData
-        lastCompletedTopic = topic // Обновляем последнюю пройденную тему
+        // Проверяем, существует ли тема уже в списке
+        if (_selectedTopics.value?.any { it.documentId == topic.documentId } != true) {
+            _selectedTopics.value?.add(topic) // Добавляем тему только если ее нет в списке
+            _selectedTopics.value = _selectedTopics.value // Триггерим обновление LiveData
+            lastCompletedTopic = topic // Обновляем последнюю пройденную тему
+        }
     }
 }
