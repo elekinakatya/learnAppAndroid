@@ -8,15 +8,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.learnapp.data.data
 import com.example.learnapp.list.MyAdapter
+import com.example.learnapp.list.SharedViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 class PythonFragment : Fragment(R.layout.fragment_python), MyAdapter.OnItemClickListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: MyAdapter
+    private val viewModel: SharedViewModel by activityViewModels()
     private val db = FirebaseFirestore.getInstance()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,6 +59,16 @@ class PythonFragment : Fragment(R.layout.fragment_python), MyAdapter.OnItemClick
     }
 
     override fun onItemClick(dataItem: data) {
+        // Проверяем, был ли элемент уже пройден
+        val currentProgress = viewModel.progress.value ?: 0
+        val newProgress = currentProgress + 1 // Увеличиваем прогресс на 1, если тема новая
+
+        // Обновляем прогресс в ViewModel
+        viewModel.updateProgress(newProgress)
+
+        // Добавляем выбранную тему в ViewModel
+        viewModel.addSelectedTopic(dataItem)
+
         // Переход к InfoFragment с передачей данных, включая documentId
         val infoFragment = InfoFragment.newInstance(dataItem.copy(documentId = dataItem.documentId))
         requireActivity().supportFragmentManager.beginTransaction()

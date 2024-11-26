@@ -34,6 +34,7 @@ class MyAdapter(private var dataList: List<data>, private val itemClickListener:
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val dataItem = dataList[position]
         holder.bind(dataItem, itemClickListener)
+
     }
 
     override fun getItemCount(): Int {
