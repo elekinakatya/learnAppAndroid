@@ -8,5 +8,6 @@ data class data(
     val anat: String="",
     val info: String="",
     val documentId: String = "",
-    var isCompleted: Boolean = false
+    var isCompleted: Boolean = false,
+    var isSelected: Boolean = false
 ): Parcelable

@@ -24,6 +24,15 @@ class SharedViewModel : ViewModel() {
     fun updateProgress(currentProgress: Int) {
         _progress.value = currentProgress
     }
+    fun removeSelectedTopic(topic: data) {
+        val currentList = _selectedTopics.value?.toMutableList() ?: mutableListOf()
+        currentList.removeAll { it.documentId == topic.documentId }
+        _selectedTopics.value = currentList
+    }
+    fun getSortedSelectedTopics(): List<data> {
+        return _selectedTopics.value?.sortedBy { it.documentId } ?: emptyList()
+    }
+
 
     fun addSelectedTopic(topic: data) {
         // Проверяем, существует ли тема уже в списке

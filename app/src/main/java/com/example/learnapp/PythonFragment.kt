@@ -58,22 +58,6 @@ class PythonFragment : Fragment(R.layout.fragment_python), MyAdapter.OnItemClick
             .addOnFailureListener { exception ->
                 Log.d("PythonFragment", "Error getting documents: ", exception)
             }
-
-//    private fun fetchDataFromFirestore() {
-//        db.collection("learn").get()
-//            .addOnSuccessListener { documents ->
-//                val dataList = mutableListOf<data>()
-//                for (document in documents) {
-//                    val dataItem = document.toObject(data::class.java)
-//                    // Добавление документа в конец списка для сохранения порядка
-//                    dataList.add(dataItem)
-//                }
-//                // Обновляем адаптер с полученными данными в том порядке, в котором они были извлечены
-//                adapter.updateData(dataList)
-//            }
-//            .addOnFailureListener { exception ->
-//                Log.d("PythonFragment", "Error getting documents: ", exception)
-//            }
     }
 
     override fun onItemClick(dataItem: data) {

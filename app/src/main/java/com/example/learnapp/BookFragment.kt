@@ -56,18 +56,28 @@ class BookFragment : Fragment(R.layout.fragment_book) {
             progressBar.progress = progress
 
             // Скрываем прогресс-бар, когда достигнут максимум (например, 10 тем)
-            if (progress >= 8) {
+            if (progress >= 17) {
                 progressBar.visibility =
                     View.GONE // Скрываем прогресс-бар, если достигнуто максимальное значение
             }
         }
         viewModel.selectedTopics.observe(viewLifecycleOwner) { topics ->
+            // Получаем отсортированный список тем
+            val sortedTopics = viewModel.getSortedSelectedTopics()
+
             // Обновляем текстовое поле с выбранными темами
-            topicsTextView.text = topics.joinToString("\n") { it.name }
+            topicsTextView.text = sortedTopics.joinToString("\n") { it.name }
 
             // Показываем кнопку, если есть выбранные темы
-            testButton.visibility = if (topics.isNotEmpty()) View.VISIBLE else View.GONE
+            testButton.visibility = if (sortedTopics.isNotEmpty()) View.VISIBLE else View.GONE
         }
+//        viewModel.selectedTopics.observe(viewLifecycleOwner) { topics ->
+//            // Обновляем текстовое поле с выбранными темами
+//            topicsTextView.text = topics.joinToString("\n") { it.name }
+//
+//            // Показываем кнопку, если есть выбранные темы
+//            testButton.visibility = if (topics.isNotEmpty()) View.VISIBLE else View.GONE
+//        }
 
         // Настройка обработчика для кнопки теста
         testButton.setOnClickListener {
